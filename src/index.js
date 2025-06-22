@@ -1,5 +1,78 @@
 // Starting the jsl 4 js script
 
+/* Workflow for this code: 
+    Create the html DOM for each object dynamically
+    Sort each object by status
+    Add the styling
+    Create a button to edit each task
+    Create a button to save the edits
+    Create a function to save the changes to the objects using the id as a identifier
+*/
+
+// Saving the edits to the innerhtml, and then the database later in the course
+// Make a save button, when clicked update the html with the inputs from the user, just get it from the input field id, also need to use the object id
+// Function to show the detail view when clicking on one of the tasks and code to exit the detailed view
+// Add a onclick function to each div and display the detailed information on a styled card according to the figma
+
+// Function to allow the user to modify the description etc of the task
+
+// Status drop down menu to change the status
+
+// Going to need to have some code that updates the array and the html when changes are made, maybe a save changes button
+
+/*
+    Thoughts for the upcoming functionality:
+        Thinking about writing the code to update the objetcs when a user edits their tasks
+        Need to update the object itself
+        Need to update the innerhtml so it changes with and without the reload
+        Need to change the column that the task is in
+        Need to make sure that the edited tasks are created dynamicaly into the correct columns etc
+        Create a save changes button
+        How to increment id when some tasks are deleted/other scenarios
+*/
+const initialTasks = [
+  {
+    id: 1,
+    title: "Launch Epic Career 🚀",
+    description: "Create a killer Resume",
+    status: "todo",
+  },
+  {
+    id: 2,
+    title: "Master JavaScript 💛",
+    description: "Get comfortable with the fundamentals",
+    status: "doing",
+  },
+  {
+    id: 3,
+    title: "Keep on Going 🏆",
+    description: "You're almost there",
+    status: "doing",
+  },
+
+  {
+    id: 11,
+    title: "Learn Data Structures and Algorithms 📚",
+    description:
+      "Study fundamental data structures and algorithms to solve coding problems efficiently",
+    status: "todo",
+  },
+  {
+    id: 12,
+    title: "Contribute to Open Source Projects 🌐",
+    description:
+      "Gain practical experience and collaborate with others in the software development community",
+    status: "done",
+  },
+  {
+    id: 13,
+    title: "Build Portfolio Projects 🛠️",
+    description:
+      "Create a portfolio showcasing your skills and projects to potential employers",
+    status: "done",
+  },
+];
+
 // Save this data in an object or array and loop through when needed
 const tasks = [];
 // Link each task to a unique id
