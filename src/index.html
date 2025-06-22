@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css"> <!-- no need for a path when they in the same folder, use paths for ref to differnt folders not in the root -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/fav.svg" type="image/svg"> <!-- This would not work whilst the svg was named favicon -->
+    <script src="index.js" defer></script>
+    <title>KanBan Board</title>
+</head>
+
+<body class="bg-[#F4F7FD] font-['Plus_Jakarta_Sans'] sm:grid sm:grid-cols-[300px_1fr] sm:grid-rows-[1024px]">
+    <!-- Header section with the kanban svg -->
+    <!-- Mobile first -->
+     <header class="sm:bg-white pt-8 border border-[#E4EBFA]">
+        <img src="/images/logo-light.svg" class="w-[375px] h-16 sm:w-[169px] sm:h-[30px] sm:pl-8 sm:mb-12" alt="Kanban Logo">
+        <!-- Hide these elements for the mobile screen size -->
+        <div class="hidden sm:block text-[#828FA3] text-[12px] pl-8 mb-4">All boards (1)</div>
+        <div class="hidden sm:block text-white rounded-tr-[100px] rounded-br-[100px] bg-[#635FC7] pl-8 w-[276px] h-[48px] leading-[48px]">
+            Launch Career
+        </div>
+        <button id="btn-add-task" class="bg-[#635FC7] text-white px-4 py-2 rounded hover:bg-[#5a54c5] transition mt-4">
+            Add Task
+        </button>
+     </header>
+
+     <main class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:grid-rows-[97px_1fr]">
+         <!-- Heading for the desktop screen, span the entire first row -->
+         <!-- Hide these elements for the mobile screen size -->
+         <div class="hidden sm:flex col-span-full bg-white text-2xl items-center pl-5 font-bold border border-[#E4EBFA]">LAUNCH CAREER</div>
+        <!-- First column 'todo' -->
+         <div class="flex flex-col gap-4 items-center">
+            <div class="flex flex-row w-full max-w-[288px] h-4 text-[12px] py-10 shrink-0 text-[#828FA3]"><img src="/images/Oval-b.png" class="w-[15px] h-[15px] mr-3.5" alt="Purple circle">TODO (4)</div>
+            <div class="card-styling">Launch Epic Career 🚀</div>
+            <div class="card-styling">Conquer React ⚛️</div>
+            <div class="card-styling">Understand Databases ⚙️</div>
+            <div class="card-styling">Crush Frameworks 🖼️</div>
+         </div>
+        <!-- Second column 'Doing' -->
+        <div class="flex flex-col gap-4 items-center">
+            <div class="flex flex-row w-full max-w-[288px] h-4 text-[12px] py-10 shrink-0 text-[#828FA3]"><img src="/images/Oval.png" class="w-[15px] h-[15px] mr-3.5" alt="Green circle">DOING (2)</div>
+            <div class="card-styling">Master JavaScript 💛</div>
+            <div class="card-styling"> Never Give Up 🏆</div>
+         </div>
+        <!-- Third column 'Done' -->
+        <div class="flex flex-col gap-4 items-center">
+            <div class="flex flex-row w-full max-w-[288px] h-4 text-[12px] py-10 shrink-0 text-[#828FA3]"><img src="/images/Oval-g.png" class="w-[15px] h-[15px] mr-3.5" alt="Blue circle">DONE (2)</div>
+            <div class="card-styling">Explore ES6 Features 🚀</div>
+            <div class="card-styling">Have fun 🥳</div>
+         </div>
+     </main>
+
+     <footer>
+        <!-- TBC -->
+     </footer>
+</body>
+
+</html>

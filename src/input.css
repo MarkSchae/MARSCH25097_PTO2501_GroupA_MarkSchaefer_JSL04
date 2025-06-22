@@ -1,0 +1,9 @@
+/* Try to only create custom classes for repeated code otherwise it defeats the main point of Tailwind */
+
+@import "tailwindcss";
+
+/* Styling for the tasks cards */
+.card-styling {
+    @apply h-16 w-full max-w-[288px] flex items-center pl-5 rounded-lg bg-[#FFFFFF] font-bold leading-[100%] text-[15px] tracking-[0px] font-['Plus_Jakarta_Sans'];
+    box-shadow: 0px 4px 6px 0px #364E7E1A;
+}
