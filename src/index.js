@@ -73,6 +73,66 @@ const initialTasks = [
   },
 ];
 
+// Generate the tasks for the html using the array of objects
+    // Generate the tasks cards and implement a edit function in which we update the object based on user input 
+    // Sort/filter into todo/done/doing-column using the status of the task
+
+// Filter method for 'todo' status and display the title of the tasks
+const toDoTasks = initialTasks.filter(task => task.status === 'todo');
+const doneTasks = initialTasks.filter(task => task.status === 'done');
+const doingTasks = initialTasks.filter(task => task.status === 'doing');
+
+// Create the html to add to the DOM for each column
+const toDoColumn = document.getElementById('todo-column');
+const doneColumn = document.getElementById('done-column');
+const doingColumn = document.getElementById('doing-column');
+
+/* 
+    Example to reference
+    const main = document.getElementById('main-container');
+
+    // Create a new div
+    const newDiv = document.createElement('div');
+    newDiv.className = 'bg-gray-200 p-4 mb-4 rounded';
+    newDiv.innerText = 'This is a dynamically added div';
+
+    // Append it to <main>
+    main.appendChild(newDiv);
+
+*/ 
+// const newToDoTask = document.createElement('div');
+
+// <div class="card-styling">Explore ES6 Features 🚀</div> Example of what the html must look like in the DOM
+// Loop through each object in the new array and create the divs for each one
+for(let i = 0; i < toDoTasks.length; i++) { // Could use a forEach method to make this cleaner
+  const newToDoTask = document.createElement('div');
+  // Add the function for the detailed view/edits/save changes of the task here?
+  newToDoTask.className = 'card-styling';
+  newToDoTask.innerHTML = toDoTasks[i].title;
+  toDoColumn.appendChild(newToDoTask);
+}
+
+// Done
+for(let i = 0; i < doneTasks.length; i++) { // Could use a forEach method to make this cleaner
+  const doneTask = document.createElement('div');
+  // Add the function for the detailed view/edits/save changes of the task here?
+  doneTask.className = 'card-styling';
+  doneTask.innerHTML = doneTasks[i].title;
+  doneColumn.appendChild(doneTask);
+}
+
+// Doing
+for(let i = 0; i < doingTasks.length; i++) { // Could use a forEach method to make this cleaner
+  const doingTask = document.createElement('div');
+  // Add the function for the detailed view/edits/save changes of the task here? 
+  doingTask.className = 'card-styling'; // I must add a hover to the card-styling
+  doingTask.innerHTML = doingTasks[i].title;
+  doingColumn.appendChild(doingTask);
+}
+
+
+
+/* Code for JSL-03, seems to be irrelevant now as we are using the tasks data given to us to complete this project
 // Save this data in an object or array and loop through when needed
 const tasks = [];
 // Link each task to a unique id
@@ -128,4 +188,4 @@ function clickToAddTask() {
         console.log("No tasks completed, let's get to work!");
     }
 };
-
+*/
