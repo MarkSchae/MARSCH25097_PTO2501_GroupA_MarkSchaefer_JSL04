@@ -7,6 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-2xl: 1.5rem;
@@ -165,6 +166,21 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .top-\[20px\] {
+    top: 20px;
+  }
+  .left-\[12px\] {
+    left: 12px;
+  }
+  .z-50 {
+    z-index: 50;
+  }
   .col-span-full {
     grid-column: 1 / -1;
   }
@@ -186,6 +202,9 @@
   .hidden {
     display: none;
   }
+  .h-3\.5 {
+    height: calc(var(--spacing) * 3.5);
+  }
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -197,6 +216,12 @@
   }
   .h-\[48px\] {
     height: 48px;
+  }
+  .h-\[112px\] {
+    height: 112px;
+  }
+  .w-3\.5 {
+    width: calc(var(--spacing) * 3.5);
   }
   .w-\[15px\] {
     width: 15px;
@@ -231,8 +256,14 @@
   .items-center {
     align-items: center;
   }
+  .justify-between {
+    justify-content: space-between;
+  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
   }
   .rounded {
     border-radius: 0.25rem;
@@ -256,8 +287,14 @@
   .bg-\[\#F4F7FD\] {
     background-color: #F4F7FD;
   }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -317,6 +354,16 @@
       @media (hover: hover) {
         background-color: #5a54c5;
       }
+    }
+  }
+  .sm\:top-\[242px\] {
+    @media (width >= 40rem) {
+      top: 242px;
+    }
+  }
+  .sm\:left-\[356px\] {
+    @media (width >= 40rem) {
+      left: 356px;
     }
   }
   .sm\:mb-12 {
@@ -398,6 +445,28 @@
   --tw-tracking: 0px;
   letter-spacing: 0px;
   box-shadow: 0px 4px 6px 0px #364E7E1A;
+}
+.detailed-card-styling {
+  display: flex;
+  height: 410px;
+  width: 345px;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1.5);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  padding: calc(var(--spacing) * 2);
+  @media (width >= 40rem) {
+    width: 600px;
+  }
+  box-shadow: 0px 4px 6px 0px #364E7E1A;
+}
+.label-color {
+  color: #828FA3;
+}
+.input-border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: #828FA340;
 }
 @property --tw-rotate-x {
   syntax: "*";

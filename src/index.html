@@ -12,7 +12,7 @@
     <title>KanBan Board</title>
 </head>
 
-<body class="bg-[#F4F7FD] font-['Plus_Jakarta_Sans'] sm:grid sm:grid-cols-[300px_1fr] sm:grid-rows-[1024px]">
+<body class="relative bg-[#F4F7FD] font-['Plus_Jakarta_Sans'] sm:grid sm:grid-cols-[300px_1fr] sm:grid-rows-[1024px]">
     <!-- Header section with the kanban svg -->
     <!-- Mobile first -->
      <header class="sm:bg-white pt-8 border border-[#E4EBFA]">
@@ -27,7 +27,32 @@
         </button>
      </header>
 
-     <main class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:grid-rows-[97px_1fr]">
+     <main class="grid grid-cols-1 gap-4 relative sm:grid-cols-3 sm:grid-rows-[97px_1fr]">
+
+        <!-- Elements for the detailed view of the tasks -->
+        <div id="detailed-task-card" class="hidden absolute z-50 top-[20px] left-[12px] sm:top-[242px] sm:left-[356px]">
+            <div class="flex justify-between">
+                <h6>Task</h6>
+                <img class="w-3.5 h-3.5" id="exit-button" src="/images/exit.png" alt="Red Exit Button">
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-title">Title</label>
+                <input class="input-border" id="edit-title" type="text">
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-description">Description</label>
+                <input class="input-border h-[112px]" id="edit-description" type="text">
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-task-status">Status</label>
+                <select class="input-border" name="edit-task-status" id="edit-task-status">
+                    <option value="todo">ToDo</option>
+                    <option value="done">Done</option>
+                    <option value="doing">Doing</option>
+                </select>
+            </div>
+        </div>
+        
          <!-- Heading for the desktop screen, span the entire first row -->
          <!-- Hide these elements for the mobile screen size -->
          <div class="hidden sm:flex col-span-full bg-white text-2xl items-center pl-5 font-bold border border-[#E4EBFA]">LAUNCH CAREER</div>

@@ -100,13 +100,41 @@ const doingColumn = document.getElementById('doing-column');
     main.appendChild(newDiv);
 
 */ 
+
+// Create the function that changes the display property of the elements for the detailed tasks view
+// Look to adding validation checks in the future
+function detailedTasksView (task, taskDiv) {
+  // Delete existing button elements
+  const existingButton = document.getElementById('btn-save-changes');
+  if(existingButton) {
+    existingButton.remove();
+  }
+  // Create a save changes button, when clicked update the relavant object, maybe run a function to rebuild the columns
+  const button = document.createElement('button');
+  button.id = 'btn-save-changes';
+  button.innerHTML = 'Save Changes';
+  // Add a function to save the changes on a user click
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  detailedTaskCard.appendChild(button);
+  const overlay = document.getElementById('backdrop');
+  if (detailedTaskCard.classList.contains('hidden')) {
+    detailedTaskCard.classList.remove('hidden');
+    detailedTaskCard.classList.add('detailed-card-styling');
+    overlay.classList.remove('hidden');
+    document.getElementById('edit-title').value = task.title;
+    document.getElementById('edit-description').value = task.description;
+    document.getElementById('edit-task-status').value = task.status;
+  }
+};
+
 // const newToDoTask = document.createElement('div');
 
 // <div class="card-styling">Explore ES6 Features 🚀</div> Example of what the html must look like in the DOM
 // Loop through each object in the new array and create the divs for each one
 for(let i = 0; i < toDoTasks.length; i++) { // Could use a forEach method to make this cleaner
   const newToDoTask = document.createElement('div');
-  // Add the function for the detailed view/edits/save changes of the task here?
+  // Add the function for the detailed view/edits/save changes of the task here
+  newToDoTask.addEventListener('click', () => detailedTasksView(toDoTasks[i], newToDoTask));
   newToDoTask.className = 'card-styling';
   newToDoTask.innerHTML = toDoTasks[i].title;
   toDoColumn.appendChild(newToDoTask);
@@ -115,7 +143,8 @@ for(let i = 0; i < toDoTasks.length; i++) { // Could use a forEach method to mak
 // Done
 for(let i = 0; i < doneTasks.length; i++) { // Could use a forEach method to make this cleaner
   const doneTask = document.createElement('div');
-  // Add the function for the detailed view/edits/save changes of the task here?
+  // Add the function for the detailed view/edits/save changes of the task here
+  doneTask.addEventListener('click', () => detailedTasksView(doneTasks[i], doneTask));
   doneTask.className = 'card-styling';
   doneTask.innerHTML = doneTasks[i].title;
   doneColumn.appendChild(doneTask);
@@ -124,7 +153,8 @@ for(let i = 0; i < doneTasks.length; i++) { // Could use a forEach method to mak
 // Doing
 for(let i = 0; i < doingTasks.length; i++) { // Could use a forEach method to make this cleaner
   const doingTask = document.createElement('div');
-  // Add the function for the detailed view/edits/save changes of the task here? 
+  // Add the function for the detailed view/edits/save changes of the task here 
+  doingTask.addEventListener('click', () => detailedTasksView(doingTasks[i], doingTask));
   doingTask.className = 'card-styling'; // I must add a hover to the card-styling
   doingTask.innerHTML = doingTasks[i].title;
   doingColumn.appendChild(doingTask);
