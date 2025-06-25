@@ -114,6 +114,7 @@ function detailedTasksView (task, taskDiv) {
   button.id = 'btn-save-changes';
   button.innerHTML = 'Save Changes';
   // Add a function to save the changes on a user click
+  button.addEventListener('click', () => saveChanges(task, taskDiv));
   const detailedTaskCard = document.getElementById('detailed-task-card');
   detailedTaskCard.appendChild(button);
   const overlay = document.getElementById('backdrop');
@@ -160,7 +161,21 @@ for(let i = 0; i < doingTasks.length; i++) { // Could use a forEach method to ma
   doingColumn.appendChild(doingTask);
 }
 
-
+// So this works but because the array is hard-coded it does not really work very well
+// I would like to do this and then call a function that builds the columns which will update the view with the edits
+function saveChanges (task, taskDiv) {
+  task.title = document.getElementById('edit-title').value;
+  task.description = document.getElementById('edit-description').value;
+  task.status = document.getElementById('edit-task-status').value;
+  taskDiv.innerHTML = task.title;
+  if (task.status.toLowerCase() === 'todo') {
+    toDoColumn.appendChild(taskDiv);
+  } else if (task.status.toLowerCase() === 'done') {
+    doneColumn.appendChild(taskDiv);
+  } else if (task.status.toLowerCase() === 'doing') {
+    doingColumn.appendChild(taskDiv);
+  }
+};
 
 /* Code for JSL-03, seems to be irrelevant now as we are using the tasks data given to us to complete this project
 // Save this data in an object or array and loop through when needed
