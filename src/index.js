@@ -177,6 +177,17 @@ function saveChanges (task, taskDiv) {
   }
 };
 
+// The function to return the page to normal when exiting the detailed view
+function exitTasksView () {
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  const overlay = document.getElementById('backdrop'); 
+  detailedTaskCard.classList.add('hidden');
+  detailedTaskCard.classList.remove('detailed-card-styling');
+  overlay.classList.add('hidden');
+};
+
+document.getElementById('exit-button').addEventListener('click', exitTasksView);
+
 /* Code for JSL-03, seems to be irrelevant now as we are using the tasks data given to us to complete this project
 // Save this data in an object or array and loop through when needed
 const tasks = [];
