@@ -20,3 +20,7 @@
 .input-border {
     @apply border border-[#828FA340]; 
 }
+
+.click-hover {
+    @apply cursor-pointer transition-transform transform hover:-translate-y-1 hover:shadow-lg;
+}

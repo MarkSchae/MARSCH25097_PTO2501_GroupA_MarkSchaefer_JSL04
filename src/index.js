@@ -77,7 +77,7 @@ const initialTasks = [
     // Generate the tasks cards and implement a edit function in which we update the object based on user input 
     // Sort/filter into todo/done/doing-column using the status of the task
 
-// Filter method for 'todo' status and display the title of the tasks
+// Filter the tasks by their status and store them in separate arrays
 const toDoTasks = initialTasks.filter(task => task.status === 'todo');
 const doneTasks = initialTasks.filter(task => task.status === 'done');
 const doingTasks = initialTasks.filter(task => task.status === 'doing');
@@ -103,6 +103,12 @@ const doingColumn = document.getElementById('doing-column');
 
 // Create the function that changes the display property of the elements for the detailed tasks view
 // Look to adding validation checks in the future
+/**
+ * Functionality to open the detailed task view 
+ * @param {*object} task - parsed into this function to be used to access and display the elements of the task that the user clicked on 
+ * @param {*HTMLElement} taskDiv - parse the specific column element (into the save changes function) so that the element can be moved to a new column based on the status if the status was edited 
+ * @returns {*void} updates the DOM by showing the modal/card elements and inserting the task content 
+ */
 function detailedTasksView (task, taskDiv) {
   // Delete existing button elements
   const existingButton = document.getElementById('btn-save-changes');
@@ -113,7 +119,10 @@ function detailedTasksView (task, taskDiv) {
   const button = document.createElement('button');
   button.id = 'btn-save-changes';
   button.innerHTML = 'Save Changes';
+  button.className = 'click-hover';
   // Add a function to save the changes on a user click
+  // The save changes function and the way I have added the event listners will change once there is a database
+  // When we have a database, I will use fetch, PUT, etc API calls to the database using the tasks specific id
   button.addEventListener('click', () => saveChanges(task, taskDiv));
   const detailedTaskCard = document.getElementById('detailed-task-card');
   detailedTaskCard.appendChild(button);
@@ -136,7 +145,7 @@ for(let i = 0; i < toDoTasks.length; i++) { // Could use a forEach method to mak
   const newToDoTask = document.createElement('div');
   // Add the function for the detailed view/edits/save changes of the task here
   newToDoTask.addEventListener('click', () => detailedTasksView(toDoTasks[i], newToDoTask));
-  newToDoTask.className = 'card-styling';
+  newToDoTask.className = 'card-styling click-hover';
   newToDoTask.innerHTML = toDoTasks[i].title;
   toDoColumn.appendChild(newToDoTask);
 }
@@ -146,7 +155,7 @@ for(let i = 0; i < doneTasks.length; i++) { // Could use a forEach method to mak
   const doneTask = document.createElement('div');
   // Add the function for the detailed view/edits/save changes of the task here
   doneTask.addEventListener('click', () => detailedTasksView(doneTasks[i], doneTask));
-  doneTask.className = 'card-styling';
+  doneTask.className = 'card-styling click-hover';
   doneTask.innerHTML = doneTasks[i].title;
   doneColumn.appendChild(doneTask);
 }
@@ -156,13 +165,19 @@ for(let i = 0; i < doingTasks.length; i++) { // Could use a forEach method to ma
   const doingTask = document.createElement('div');
   // Add the function for the detailed view/edits/save changes of the task here 
   doingTask.addEventListener('click', () => detailedTasksView(doingTasks[i], doingTask));
-  doingTask.className = 'card-styling'; // I must add a hover to the card-styling
+  doingTask.className = 'card-styling click-hover'; // I must add a hover to the card-styling
   doingTask.innerHTML = doingTasks[i].title;
   doingColumn.appendChild(doingTask);
 }
 
-// So this works but because the array is hard-coded it does not really work very well
+// So this works but because the array is hard-coded it does not really work very well, in future update/PUT/Patch the objects themselves when we are using persisting data methods
 // I would like to do this and then call a function that builds the columns which will update the view with the edits
+/**
+ * Updates the tasks object with the users edits (does not persist with as any stored data)
+ * @param {*object} task - getting the key value pairs from the object that the user is editing and update the task with the edits
+ * @param {*HTMLElement} taskDiv - getting the element in order to update each element with the edits 
+ * @returns {*void} - updates the task object with the edited values and moves the task if the status changes
+ */
 function saveChanges (task, taskDiv) {
   task.title = document.getElementById('edit-title').value;
   task.description = document.getElementById('edit-description').value;
